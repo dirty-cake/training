@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input type="text" v-model="mess">
+        <input type="text" :value="msg" @input="changeMess">
         <p> {{ mess }}</p>
     </div>
 </template>
@@ -11,6 +11,12 @@ export default {
     data () {
         return {
             mess: ''
+        }
+    },
+    methods: {
+        changeMess(event){
+            this.mess = event.target.value;
+            this.$emit('messChange', this.mess);
         }
     }
 }
